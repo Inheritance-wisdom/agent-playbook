@@ -1,6 +1,6 @@
 spec_version: '0.1.0'
 name: agent-playbook
-version: 1.0.0
+version: 1.0.1
 description: "Initial gitagent export surface for ECC's shared skill catalog, governance, and identity. Native agents, commands, and hooks remain authoritative in the repository while manifest coverage expands."
 author: dylan
 license: MIT
@@ -207,6 +207,7 @@ commands:
   - flutter-test
   - gan-build
   - gan-design
+  - git-commit-push
   - go-build
   - go-review
   - go-test

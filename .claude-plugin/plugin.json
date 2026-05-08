@@ -1,6 +1,6 @@
 {
   "name": "agent-playbook",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Battle-tested Claude Code plugin for engineering teams — 48 agents, 182 skills, 68 legacy command shims, production-ready hooks, and selective install workflows evolved through continuous real-world use",
   "author": {
     "name": "Dylan LYU",
