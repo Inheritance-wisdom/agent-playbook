@@ -12,7 +12,7 @@
       "name": "agent-playbook",
       "source": "./",
       "description": "The most comprehensive Claude Code plugin — 48 agents, 182 skills, 68 legacy command shims, selective install profiles, and production-ready hooks for TDD, security scanning, code review, and continuous learning",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "author": {
         "name": "Dylan LYU",
         "email": "mingzong.lyu@gmail.com"

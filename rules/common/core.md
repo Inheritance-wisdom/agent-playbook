@@ -51,4 +51,14 @@ Project-level overrides this file, except Engineering Philosophy and Behavior Bo
 
 Apply SDD only when requirements are vague or self-defined. Skip for clear external requirements, small fixes, and quick debugging. If the project defines an SDD workflow, use it.
 
+### Hooks System
+
+| Hook        | Trigger               | Example Use                           |
+| ----------- | --------------------- | ------------------------------------- |
+| PreToolUse  | Before tool execution | Validate parameters, block unsafe ops |
+| PostToolUse | After tool execution  | Auto-format, run checks               |
+| Stop        | Session ends          | Final verification                    |
+
+Auto-accept permissions: enable only for trusted, well-defined plans. Configure `allowedTools` in `~/.claude/settings.json`. Never use `dangerously-skip-permissions`.
+
 **TodoWrite**: Use to track progress on multi-step tasks, verify understanding before acting, and enable real-time steering.

@@ -2,89 +2,60 @@
 
 ## Immutability (CRITICAL)
 
-ALWAYS create new objects, NEVER mutate existing ones:
-
-```
-// Pseudocode
-WRONG:  modify(original, field, value) → changes original in-place
-CORRECT: update(original, field, value) → returns new copy with change
-```
-
-Rationale: Immutable data prevents hidden side effects, makes debugging easier, and enables safe concurrency.
+ALWAYS create new objects, NEVER mutate existing ones.
 
 ## Core Principles
 
-### KISS (Keep It Simple)
-
-- Prefer the simplest solution that actually works
-- Avoid premature optimization
-- Optimize for clarity over cleverness
-
-### DRY (Don't Repeat Yourself)
-
-- Extract repeated logic into shared functions or utilities
-- Avoid copy-paste implementation drift
-- Introduce abstractions when repetition is real, not speculative
-
-### YAGNI (You Aren't Gonna Need It)
-
-- Do not build features or abstractions before they are needed
-- Avoid speculative generality
-- Start simple, then refactor when the pressure is real
+- **KISS**: Simplest solution that works. Optimize for clarity, not cleverness.
+- **DRY**: Extract repeated logic. Abstract when repetition is real, not speculative.
+- **YAGNI**: Don't build features before they're needed. Start simple, refactor under real pressure.
 
 ## File Organization
 
-MANY SMALL FILES > FEW LARGE FILES:
-- High cohesion, low coupling
-- 200-400 lines typical, 800 max
-- Extract utilities from large modules
-- Organize by feature/domain, not by type
+Many small files > few large files. 200–400 lines typical, **800 lines max**. Organize by feature/domain, not by type.
+
+## Functions
+
+**50 lines max**. Split large functions into focused pieces with clear responsibilities.
+
+## Scout Rule
+
+Always leave the code cleaner than you found it. Every feature PR should include a small cleanup unrelated to the main task but within the modified scope — fix one piece of technical debt, remove dead code, or improve a confusing name.
+
+## Atomic Change Principle
+
+Each edit should be limited to a single functional module or logical component to ensure reviewability and reduce conflicts. For files over 500 lines, never use full overwrite — always use targeted edits.
 
 ## Error Handling
 
-ALWAYS handle errors comprehensively:
-- Handle errors explicitly at every level
-- Provide user-friendly error messages in UI-facing code
-- Log detailed error context on the server side
-- Never silently swallow errors
+Handle explicitly at every level. Log detailed context server-side. Never swallow silently.
 
 ## Input Validation
 
-ALWAYS validate at system boundaries:
-- Validate all user input before processing
-- Use schema-based validation where available
-- Fail fast with clear error messages
-- Never trust external data (API responses, user input, file content)
+Validate at all system boundaries. Fail fast with clear messages. Never trust external data.
 
 ## Naming Conventions
 
-- Variables and functions: `camelCase` with descriptive names
-- Booleans: prefer `is`, `has`, `should`, or `can` prefixes
-- Interfaces, types, and components: `PascalCase`
-- Constants: `UPPER_SNAKE_CASE`
-- Custom hooks: `camelCase` with a `use` prefix
+| Type                          | Convention                                     |
+| ----------------------------- | ---------------------------------------------- |
+| Variables, functions          | `camelCase`                                    |
+| Booleans                      | `is`, `has`, `should`, `can` prefix            |
+| Interfaces, types, components | `PascalCase`                                   |
+| Constants                     | `UPPER_SNAKE_CASE`                             |
+| Custom hooks                  | `camelCase` with `use` prefix (e.g. `useAuth`) |
 
 ## Code Smells to Avoid
 
-### Deep Nesting
+- Deep nesting (>4 levels): use early returns.
+- Magic numbers: use named constants.
+- Long functions (>50 lines): split into focused pieces.
 
-Prefer early returns over nested conditionals once the logic starts stacking.
+## Design Patterns
 
-### Magic Numbers
+**Repository Pattern**: Standard interface — `findAll`, `findById`, `create`, `update`, `delete`. Business logic depends on the interface, not storage implementation.
 
-Use named constants for meaningful thresholds, delays, and limits.
-
-### Long Functions
-
-Split large functions into focused pieces with clear responsibilities.
-
-## Code Quality Checklist
-
-Before marking work complete:
-- [ ] Code is readable and well-named
-- [ ] Functions are small (<50 lines)
-- [ ] Files are focused (<800 lines)
-- [ ] No deep nesting (>4 levels)
-- [ ] Proper error handling
-- [ ] No hardcoded values (use constants or config)
-- [ ] No mutation (immutable patterns used)
+**API Response Envelope**: All responses use a consistent structure.
+```json
+{ "success": true, "data": {}, "error": null }
+```
+For paginated responses, add `"meta": { "total": 0, "page": 1, "limit": 20 }`.

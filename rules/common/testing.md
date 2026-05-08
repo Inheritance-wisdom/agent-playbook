@@ -1,57 +1,26 @@
 # Testing Requirements
 
-## Minimum Test Coverage: 80%
+Minimum coverage: **80%**. Required types: Unit, Integration, E2E.
 
-Test Types (ALL required):
-1. **Unit Tests** - Individual functions, utilities, components
-2. **Integration Tests** - API endpoints, database operations
-3. **E2E Tests** - Critical user flows (framework chosen per language)
+## TDD Workflow (MANDATORY)
 
-## Test-Driven Development
+1. Write test → must **FAIL** (RED)
+2. Write minimal implementation → must **PASS** (GREEN)
+3. Refactor → verify coverage ≥ 80%
 
-MANDATORY workflow:
-1. Write test first (RED)
-2. Run test - it should FAIL
-3. Write minimal implementation (GREEN)
-4. Run test - it should PASS
-5. Refactor (IMPROVE)
-6. Verify coverage (80%+)
-
-## Troubleshooting Test Failures
-
-1. Use **tdd-guide** agent
-2. Check test isolation
-3. Verify mocks are correct
-4. Fix implementation, not tests (unless tests are wrong)
-
-## Agent Support
-
-- **tdd-guide** - Use PROACTIVELY for new features, enforces write-tests-first
-
-## Test Structure (AAA Pattern)
-
-Prefer Arrange-Act-Assert structure for tests:
+## Test Structure (AAA)
 
 ```typescript
-test('calculates similarity correctly', () => {
+test("returns empty array when no markets match query", () => {
   // Arrange
-  const vector1 = [1, 0, 0]
-  const vector2 = [0, 1, 0]
+  const query = "xyz";
 
   // Act
-  const similarity = calculateCosineSimilarity(vector1, vector2)
+  const result = search(query);
 
   // Assert
-  expect(similarity).toBe(0)
-})
+  expect(result).toEqual([]);
+});
 ```
 
-### Test Naming
-
-Use descriptive names that explain the behavior under test:
-
-```typescript
-test('returns empty array when no markets match query', () => {})
-test('throws error when API key is missing', () => {})
-test('falls back to substring search when Redis is unavailable', () => {})
-```
+Use descriptive names that explain **behavior**, not implementation.
