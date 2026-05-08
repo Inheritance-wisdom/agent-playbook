@@ -1,28 +1,35 @@
-spec_version: "0.1.0"
-name: everything-claude-code
-version: 2.0.0-rc.1
+spec_version: '0.1.0'
+name: agent-playbook
+version: 1.0.0
 description: "Initial gitagent export surface for ECC's shared skill catalog, governance, and identity. Native agents, commands, and hooks remain authoritative in the repository while manifest coverage expands."
-author: affaan-m
+author: dylan
 license: MIT
 model:
   preferred: claude-opus-4-6
   fallback:
     - claude-sonnet-4-6
 skills:
+  - accessibility
   - agent-eval
   - agent-harness-construction
+  - agent-introspection-debugging
   - agent-payment-x402
+  - agent-sort
   - agentic-engineering
   - ai-first-engineering
   - ai-regression-testing
   - android-clean-architecture
+  - api-connector-builder
   - api-design
   - architecture-decision-records
   - article-writing
+  - automation-audit-ops
+  - autonomous-agent-harness
   - autonomous-loops
   - backend-patterns
   - benchmark
   - blueprint
+  - brand-voice
   - browser-qa
   - bun-runtime
   - canary-watch
@@ -31,10 +38,12 @@ skills:
   - claude-devfleet
   - click-path-audit
   - clickhouse-io
+  - code-tour
   - codebase-onboarding
   - coding-standards
   - compose-multiplatform-patterns
   - configure-ecc
+  - connections-optimizer
   - content-engine
   - content-hash-cache-pattern
   - context-budget
@@ -42,13 +51,19 @@ skills:
   - continuous-learning
   - continuous-learning-v2
   - cost-aware-llm-pipeline
+  - council
   - cpp-coding-standards
   - cpp-testing
   - crosspost
+  - csharp-testing
+  - customer-billing-ops
   - customs-trade-compliance
+  - dart-flutter-patterns
+  - dashboard-builder
   - data-scraper-agent
   - database-migrations
   - deep-research
+  - defi-amm-security
   - deployment-patterns
   - design-system
   - django-patterns
@@ -58,29 +73,44 @@ skills:
   - dmux-workflows
   - docker-patterns
   - documentation-lookup
+  - dotnet-patterns
   - e2e-testing
+  - ecc-tools-cost-audit
+  - email-ops
   - energy-procurement
   - enterprise-agent-ops
   - eval-harness
+  - evm-token-decimals
   - exa-search
   - fal-ai-media
+  - finance-billing-ops
   - flutter-dart-code-review
   - foundation-models-on-device
   - frontend-patterns
   - frontend-slides
+  - gan-style-harness
+  - gateguard
   - git-workflow
+  - github-ops
   - golang-patterns
   - golang-testing
+  - google-workspace-ops
   - healthcare-cdss-patterns
   - healthcare-emr-patterns
   - healthcare-eval-harness
   - healthcare-phi-compliance
+  - hermes-imports
+  - hexagonal-architecture
+  - hipaa-compliance
+  - hookify-rules
   - inventory-demand-planning
   - investor-materials
   - investor-outreach
   - iterative-retrieval
   - java-coding-standards
+  - jira-integration
   - jpa-patterns
+  - knowledge-ops
   - kotlin-coroutines-flows
   - kotlin-exposed-patterns
   - kotlin-ktor-patterns
@@ -91,21 +121,31 @@ skills:
   - laravel-security
   - laravel-tdd
   - laravel-verification
+  - lead-intelligence
   - liquid-glass-design
+  - llm-trading-agent-security
   - logistics-exception-management
+  - manim-video
   - market-research
   - mcp-server-patterns
+  - messages-ops
   - nanoclaw-repl
+  - nestjs-patterns
   - nextjs-turbopack
+  - nodejs-keccak256
   - nutrient-document-processing
   - nuxt4-patterns
+  - openclaw-persona-forge
+  - opensource-pipeline
   - perl-patterns
   - perl-security
   - perl-testing
   - plankton-code-quality
   - postgres-patterns
+  - product-capability
   - product-lens
   - production-scheduling
+  - project-flow-ops
   - prompt-optimizer
   - python-patterns
   - python-testing
@@ -113,7 +153,9 @@ skills:
   - quality-nonconformance
   - ralphinho-rfc-pipeline
   - regex-vs-llm-structured-text
+  - remotion-video-creation
   - repo-scan
+  - research-ops
   - returns-reverse-logistics
   - rules-distill
   - rust-patterns
@@ -121,10 +163,13 @@ skills:
   - safety-guard
   - santa-method
   - search-first
+  - security-bounty-hunter
   - security-review
   - security-scan
+  - seo
   - skill-comply
   - skill-stocktake
+  - social-graph-ranker
   - springboot-patterns
   - springboot-security
   - springboot-tdd
@@ -136,11 +181,15 @@ skills:
   - swiftui-patterns
   - tdd-workflow
   - team-builder
+  - terminal-ops
   - token-budget-advisor
+  - ui-demo
+  - unified-notifications-ops
   - verification-loop
   - video-editing
   - videodb
   - visa-doc-translate
+  - workspace-surface-audit
   - x-api
 commands:
   - aside
