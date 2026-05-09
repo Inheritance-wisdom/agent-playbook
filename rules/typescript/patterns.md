@@ -11,16 +11,14 @@ paths:
 
 ## API Response Format
 
+TypeScript shape for the envelope from common/patterns.md:
+
 ```typescript
 interface ApiResponse<T> {
   success: boolean
   data?: T
   error?: string
-  meta?: {
-    total: number
-    page: number
-    limit: number
-  }
+  meta?: { total: number; page: number; limit: number }
 }
 ```
 

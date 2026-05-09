@@ -37,10 +37,7 @@ public class Order {
 
 ## Naming
 
-Follow standard Java conventions:
-- `PascalCase` for classes, interfaces, records, enums
-- `camelCase` for methods, fields, parameters, local variables
-- `SCREAMING_SNAKE_CASE` for `static final` constants
+- Standard Java conventions per common/coding-style.md
 - Packages: all lowercase, reverse domain (`com.example.app.service`)
 
 ## Modern Java Features

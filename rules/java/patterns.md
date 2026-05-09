@@ -8,8 +8,6 @@ paths:
 
 ## Repository Pattern
 
-Encapsulate data access behind an interface:
-
 ```java
 public interface OrderRepository {
     Optional<Order> findById(Long id);
@@ -19,7 +17,7 @@ public interface OrderRepository {
 }
 ```
 
-Concrete implementations handle storage details (JPA, JDBC, in-memory for tests).
+Concrete impls handle storage (JPA, JDBC, in-memory for tests).
 
 ## Service Layer
 
@@ -127,7 +125,7 @@ String message = switch (result) {
 
 ## API Response Envelope
 
-Consistent API responses:
+Java implementation of the envelope from common/patterns.md:
 
 ```java
 public record ApiResponse<T>(boolean success, T data, String error) {

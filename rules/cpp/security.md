@@ -37,14 +37,7 @@ paths:
 
 ## Static Analysis
 
-- Use **clang-tidy** for automated checks:
-  ```bash
-  clang-tidy --checks='*' src/*.cpp
-  ```
-- Use **cppcheck** for additional analysis:
-  ```bash
-  cppcheck --enable=all src/
-  ```
+- Use **clang-tidy** and **cppcheck** in CI (see [hooks.md](./hooks.md) for pipeline setup)
 
 ## Reference
 

@@ -51,9 +51,7 @@ class ScreenViewModel(private val useCase: GetItemsUseCase) : ViewModel() {
 
 ## Repository Pattern
 
-- `suspend` functions return `Result<T>` or custom error type
-- `Flow` for reactive streams
-- Coordinate local + remote data sources
+Kotlin specifics on top of common/patterns.md: `suspend` returning `Result<T>`, `Flow` for reactive streams.
 
 ```kotlin
 interface ItemRepository {

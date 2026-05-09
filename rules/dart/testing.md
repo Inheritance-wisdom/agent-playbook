@@ -176,16 +176,6 @@ testWidgets('UserCard golden test', (tester) async {
 
 Run `flutter test --update-goldens` when intentional visual changes are made.
 
-## Test Naming
-
-Use descriptive, behavior-focused names:
-
-```dart
-test('returns null when user does not exist', () { ... });
-test('throws NotFoundException when id is empty string', () { ... });
-testWidgets('disables submit button while form is invalid', (tester) async { ... });
-```
-
 ## Test Organization
 
 ```

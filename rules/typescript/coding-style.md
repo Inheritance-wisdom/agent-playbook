@@ -115,59 +115,21 @@ export function formatUser(user) {
 
 ## Immutability
 
-Use spread operator for immutable updates:
-
-```typescript
-interface User {
-  id: string
-  name: string
-}
-
-// WRONG: Mutation
-function updateUser(user: User, name: string): User {
-  user.name = name // MUTATION!
-  return user
-}
-
-// CORRECT: Immutability
-function updateUser(user: Readonly<User>, name: string): User {
-  return {
-    ...user,
-    name
-  }
-}
-```
+Use spread / `Readonly<T>` for immutable updates: `return { ...user, name }`.
 
 ## Error Handling
 
-Use async/await with try-catch and narrow unknown errors safely:
+Catch `error: unknown` and narrow with `instanceof Error`. Wrap async work in try-catch:
 
 ```typescript
-interface User {
-  id: string
-  email: string
-}
-
-declare function riskyOperation(userId: string): Promise<User>
-
 function getErrorMessage(error: unknown): string {
-  if (error instanceof Error) {
-    return error.message
-  }
-
+  if (error instanceof Error) return error.message
   return 'Unexpected error'
-}
-
-const logger = {
-  error: (message: string, error: unknown) => {
-    // Replace with your production logger (for example, pino or winston).
-  }
 }
 
 async function loadUser(userId: string): Promise<User> {
   try {
-    const result = await riskyOperation(userId)
-    return result
+    return await riskyOperation(userId)
   } catch (error: unknown) {
     logger.error('Operation failed', error)
     throw new Error(getErrorMessage(error))
@@ -177,7 +139,7 @@ async function loadUser(userId: string): Promise<User> {
 
 ## Input Validation
 
-Use Zod for schema-based validation and infer types from the schema:
+Use Zod for schema-based validation; infer types from the schema:
 
 ```typescript
 import { z } from 'zod'
@@ -186,10 +148,8 @@ const userSchema = z.object({
   email: z.string().email(),
   age: z.number().int().min(0).max(150)
 })
-
 type UserInput = z.infer<typeof userSchema>
-
-const validated: UserInput = userSchema.parse(input)
+const validated = userSchema.parse(input)
 ```
 
 ## Console.log

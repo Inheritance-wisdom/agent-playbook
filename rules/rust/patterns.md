@@ -8,7 +8,7 @@ paths:
 
 ## Repository Pattern with Traits
 
-Encapsulate data access behind a trait:
+Rust trait variant — note `Send + Sync` bounds for shared access:
 
 ```rust
 pub trait OrderRepository: Send + Sync {
@@ -18,8 +18,6 @@ pub trait OrderRepository: Send + Sync {
     fn delete(&self, id: u64) -> Result<(), StorageError>;
 }
 ```
-
-Concrete implementations handle storage details (Postgres, SQLite, in-memory for tests).
 
 ## Service Layer
 

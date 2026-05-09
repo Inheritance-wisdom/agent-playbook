@@ -11,19 +11,15 @@ paths:
 
 ## Secrets Management
 
-- Never hardcode API keys, tokens, or credentials in Dart source
-- Use `--dart-define` or `--dart-define-from-file` for compile-time config (values are not truly secret — use a backend proxy for server-side secrets)
-- Use `flutter_dotenv` or equivalent, with `.env` files listed in `.gitignore`
-- Store runtime secrets in platform-secure storage: `flutter_secure_storage` (Keychain on iOS, EncryptedSharedPreferences on Android)
+- Use `--dart-define` / `--dart-define-from-file` for compile-time config (NOT true secrets — use backend proxy)
+- Runtime secrets: `flutter_secure_storage` (Keychain on iOS, EncryptedSharedPreferences on Android)
+- `flutter_dotenv` with `.env` in `.gitignore` for local dev
 
 ```dart
-// BAD
-const apiKey = 'sk-abc123...';
-
-// GOOD — compile-time config (not secret, just configurable)
+// Compile-time config
 const apiKey = String.fromEnvironment('API_KEY');
 
-// GOOD — runtime secret from secure storage
+// Runtime secret from secure storage
 final token = await secureStorage.read(key: 'auth_token');
 ```
 

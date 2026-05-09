@@ -16,20 +16,9 @@ paths:
 
 ## Immutability
 
-- Prefer `final` for local variables and `const` for compile-time constants
-- Use `const` constructors wherever all fields are `final`
+- Prefer `final` / `const`; use `const` constructors when all fields are `final`
 - Return unmodifiable collections from public APIs (`List.unmodifiable`, `Map.unmodifiable`)
 - Use `copyWith()` for state mutations in immutable state classes
-
-```dart
-// BAD
-var count = 0;
-List<String> items = ['a', 'b'];
-
-// GOOD
-final count = 0;
-const items = ['a', 'b'];
-```
 
 ## Naming
 

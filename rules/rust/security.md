@@ -8,16 +8,9 @@ paths:
 
 ## Secrets Management
 
-- Never hardcode API keys, tokens, or credentials in source code
-- Use environment variables: `std::env::var("API_KEY")`
-- Fail fast if required secrets are missing at startup
-- Keep `.env` files in `.gitignore`
+Load with `std::env::var("KEY_NAME")` and fail fast at startup:
 
 ```rust
-// BAD
-const API_KEY: &str = "sk-abc123...";
-
-// GOOD — environment variable with early validation
 fn load_api_key() -> anyhow::Result<String> {
     std::env::var("PAYMENT_API_KEY")
         .context("PAYMENT_API_KEY must be set")

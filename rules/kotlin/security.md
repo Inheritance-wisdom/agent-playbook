@@ -41,8 +41,7 @@ val token = secureStorage.get("auth_token")
 
 ## Input Validation
 
-- Validate all user input before processing or sending to API
-- Use parameterized queries for Room/SQLDelight — never concatenate user input into SQL
+- Use parameterized queries for Room/SQLDelight — never interpolate user input into SQL
 - Sanitize file paths from user input to prevent path traversal
 
 ```kotlin

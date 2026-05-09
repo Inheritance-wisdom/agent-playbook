@@ -11,18 +11,9 @@ paths:
 
 ## Secret Management
 
-- Never hardcode API keys, tokens, or connection strings in source code
-- Use environment variables, user secrets for local development, and a secret manager in production
+- Use environment variables / user secrets / production secret manager
 - Keep `appsettings.*.json` free of real credentials
-
-```csharp
-// BAD
-const string ApiKey = "sk-live-123";
-
-// GOOD
-var apiKey = builder.Configuration["OpenAI:ApiKey"]
-    ?? throw new InvalidOperationException("OpenAI:ApiKey is not configured.");
-```
+- Load via `builder.Configuration` and fail fast if missing
 
 ## SQL Injection Prevention
 

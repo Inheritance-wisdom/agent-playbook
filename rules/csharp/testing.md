@@ -41,6 +41,5 @@ public sealed class OrderServiceTests
 
 ## Coverage
 
-- Target 80%+ line coverage
+- Use `dotnet test` in CI with coverage collection (see common/testing.md for 80% target)
 - Focus coverage on domain logic, validation, auth, and failure paths
-- Run `dotnet test` in CI with coverage collection enabled where available

@@ -104,7 +104,6 @@ Do not reach for generic wrapper `div` stacks when a semantic element exists.
 
 ## Naming
 
-- Components: PascalCase (`ScrollySection`, `SurfaceCard`)
-- Hooks: `use` prefix (`useReducedMotion`)
+Per common/coding-style.md, plus web-specific:
 - CSS classes: kebab-case or utility classes
 - Animation timelines: camelCase with intent (`heroRevealTl`)

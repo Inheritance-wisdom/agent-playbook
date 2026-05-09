@@ -31,15 +31,7 @@ public interface IUserRepository
 
 ## Immutability
 
-- Prefer `init` setters, constructor parameters, and immutable collections for shared state
-- Do not mutate input models in-place when producing updated state
-
-```csharp
-public sealed record UserProfile(string Name, string Email);
-
-public static UserProfile Rename(UserProfile profile, string name) =>
-    profile with { Name = name };
-```
+- Prefer `init` setters, `record with { ... }`, and immutable collections — see common/coding-style.md
 
 ## Async and Error Handling
 

@@ -22,9 +22,8 @@ paths:
 ## Resource Management
 
 - **RAII everywhere** — no manual `new`/`delete`
-- Use `std::unique_ptr` for exclusive ownership
-- Use `std::shared_ptr` only when shared ownership is truly needed
-- Use `std::make_unique` / `std::make_shared` over raw `new`
+- `std::unique_ptr` for exclusive ownership; `std::shared_ptr` only when sharing is truly needed
+- Prefer `std::make_unique` / `std::make_shared` over raw `new`
 
 ## Naming Conventions
 

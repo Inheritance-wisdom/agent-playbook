@@ -15,9 +15,8 @@ paths:
 
 ## Immutability
 
-- Prefer immutable DTOs and value objects for data crossing service boundaries.
-- Use `readonly` properties or immutable constructors for request/response payloads where possible.
-- Keep arrays for simple maps; promote business-critical structures into explicit classes.
+- Use `readonly` properties for request/response DTOs and value objects (PHP 8.1+)
+- Promote business-critical structures from arrays into explicit classes
 
 ## Formatting
 
