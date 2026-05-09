@@ -1,22 +1,26 @@
 # Development Workflow
 
-## Feature Implementation Workflow
+End-to-end pipeline for any non-trivial change. Each step links to the rule that owns the detail.
 
-0. **Research & Reuse** _(mandatory before any new implementation)_
-   - GitHub code search → library docs (Context7 or vendor) → Exa for broader discovery.
-   - Check package registries (npm, PyPI, crates.io) before writing utility code.
-   - For new projects, find a battle-tested skeleton. Prefer adopting over net-new.
+## Feature Implementation Pipeline
 
-1. **Plan First**: PRD, architecture, system design, tech doc, task list. Identify dependencies, risks, and key edge cases.
+0. **Research & Reuse** _(mandatory before writing new code)_
+   - **GitHub first**: `gh search repos` / `gh search code` to find existing implementations and patterns
+   - **Library docs second**: Context7 or primary vendor docs to confirm API behavior
+   - **Exa third**: only when the first two are insufficient
+   - **Package registries**: npm / PyPI / crates.io / Maven before hand-rolling utilities
+   - Prefer adopting or porting a proven approach over net-new code
 
-2. **Hypothesis Verification** _(bug fixes only)_: Before writing any code, explicitly state "Why it failed" and "How the fix addresses it". Never patch without understanding the root cause.
+1. **Plan First** — invoke `planner`. Produce PRD / architecture / system design / task list. Identify dependencies, risks, key edge cases.
 
-3. **TDD**: Write tests first → implement → refactor. Target 80%+ coverage.
+2. **Hypothesis Verification** _(bug fixes only)_ — explicitly state "**why it failed**" and "**how the fix addresses it**" before any code change. Never patch without root-cause understanding.
 
-4. **Code Review**: Invoke appropriate reviewer agent after writing. Address CRITICAL and HIGH issues.
+3. **TDD** — see [testing.md](./testing.md). Use `tdd-guide`. Target ≥80% coverage.
 
-5. **Documentation Sync**: When modifying core logic, API handlers, or database schemas, proactively check and update related docs (README, specs, AGENTS.md).
+4. **Code Review** — see [code-review.md](./code-review.md). Run `code-reviewer` + the language reviewer in parallel after writing. Fix CRITICAL/HIGH; address MEDIUM when feasible.
 
-6. **Commit & Push**: Conventional commits — `<type>(<scope>): <subject>`.
+5. **Documentation Sync** — when modifying core logic, API handlers, or DB schemas, proactively update README, specs, codemaps, and CLAUDE.md / AGENTS.md. Land docs in the same commit as the code.
 
-7. **Pre-Review Checks**: CI passing, conflicts resolved, branch up to date.
+6. **Commit & Push** — see [git-workflow.md](./git-workflow.md). Conventional commits.
+
+7. **Pre-Review Gate** — CI green · conflicts resolved · branch up to date with target. Only request review after this passes.

@@ -1,64 +1,26 @@
+---
+paths:
+  - "**/*.html"
+  - "**/*.htm"
+  - "**/*.css"
+  - "**/*.scss"
+  - "**/*.sass"
+  - "**/*.less"
+  - "**/*.vue"
+  - "**/*.svelte"
+  - "**/*.astro"
+---
 > This file extends [common/hooks.md](../common/hooks.md) with web-specific hook recommendations.
+>
+> JS/TS tooling (Prettier, ESLint, tsc, console.log) lives in [typescript/hooks.md](../typescript/hooks.md).
 
 # Web Hooks
 
-## Recommended PostToolUse Hooks
-
 Prefer project-local tooling. Do not wire hooks to remote one-off package execution.
 
-### Format on Save
+## PostToolUse Hooks
 
-Use the project's existing formatter entrypoint after edits:
-
-```json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "pnpm prettier --write \"$FILE_PATH\"",
-        "description": "Format edited frontend files"
-      }
-    ]
-  }
-}
-```
-
-Equivalent local commands via `yarn prettier` or `npm exec prettier --` are fine when they use repo-owned dependencies.
-
-### Lint Check
-
-```json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "pnpm eslint --fix \"$FILE_PATH\"",
-        "description": "Run ESLint on edited frontend files"
-      }
-    ]
-  }
-}
-```
-
-### Type Check
-
-```json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Write|Edit",
-        "command": "pnpm tsc --noEmit --pretty false",
-        "description": "Type-check after frontend edits"
-      }
-    ]
-  }
-}
-```
-
-### CSS Lint
+### CSS Lint (Stylelint)
 
 ```json
 {
@@ -114,7 +76,5 @@ Block oversized writes from tool input content, not from a file that may not exi
 ## Ordering
 
 Recommended order:
-1. format
-2. lint
-3. type check
-4. build verification
+1. CSS lint (Stylelint)
+2. build verification
