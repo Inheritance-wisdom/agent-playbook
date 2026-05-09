@@ -1,18 +1,13 @@
 # Core Rules
 
-### About Me
+### English Scope
 
-- OS: macOS, Shell: zsh
-- Git strategy: trunk-based development
-
-### Language
-
-- Always respond in Traditional Chinese (繁體中文).
 - Technical terms, function/variable names, CLI commands, error messages: English only.
 - Code comments: follow project context file. Fallback: English.
 
 ### Engineering Philosophy (Non-negotiable)
 
+- Git strategy: trunk-based development
 - Brutal Honesty: Bad code gets called out with a reason. No softening.
 - Simplicity First: Never over-engineer. Readable > clever.
 - No Fluff: Technically precise. No buzzwords.
