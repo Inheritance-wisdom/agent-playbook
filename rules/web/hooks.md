@@ -1,15 +1,16 @@
 ---
 paths:
-  - "**/*.html"
-  - "**/*.htm"
-  - "**/*.css"
-  - "**/*.scss"
-  - "**/*.sass"
-  - "**/*.less"
-  - "**/*.vue"
-  - "**/*.svelte"
-  - "**/*.astro"
+  - '**/*.html'
+  - '**/*.htm'
+  - '**/*.css'
+  - '**/*.scss'
+  - '**/*.sass'
+  - '**/*.less'
+  - '**/*.vue'
+  - '**/*.svelte'
+  - '**/*.astro'
 ---
+
 > This file extends [common/hooks.md](../common/hooks.md) with web-specific hook recommendations.
 >
 > JS/TS tooling (Prettier, ESLint, tsc, console.log) lives in [typescript/hooks.md](../typescript/hooks.md).
@@ -20,7 +21,67 @@ Prefer project-local tooling. Do not wire hooks to remote one-off package execut
 
 ## PostToolUse Hooks
 
-### CSS Lint (Stylelint)
+Use the project's existing formatter entrypoint after edits:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "command": "pnpm prettier --write \"$FILE_PATH\"",
+        "description": "Format edited frontend files"
+      }
+    ]
+  }
+}
+```
+
+Equivalent local commands via `yarn prettier` or `npm exec prettier --` are fine when they use repo-owned dependencies.
+
+### Lint Check
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "command": "pnpm eslint --fix \"$FILE_PATH\"",
+        "description": "Run ESLint on edited frontend files"
+      }
+    ]
+  }
+}
+```
+
+### Type Check
+
+Use `--incremental` so re-runs reuse the previous `.tsbuildinfo` (1-3s on unchanged code instead of 30-60s every time). Wrap in `timeout` so a stuck tsc gets reaped by the OS instead of accumulating across edits — this prevents the multi-process buildup that happens when edits fire faster than tsc finishes.
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "command": "timeout 60 pnpm tsc --noEmit --pretty false --incremental --tsBuildInfoFile node_modules/.cache/tsc-hook.tsbuildinfo",
+        "description": "Type-check after frontend edits (incremental + timeout-capped)"
+      }
+    ]
+  }
+}
+```
+
+**Why both flags matter:**
+
+- Without `--incremental`, every edit re-checks the entire program from scratch. On a real Next.js project this stacks fast: edits at 5-10s intervals + 30-60s tsc runs = N concurrent tsc processes.
+- Without `timeout`, a tsc that hangs (transitive dep change, type-checker stuck on a recursive type) never exits and orphans when the parent shell does.
+- `--tsBuildInfoFile` is required because `--noEmit` normally suppresses the buildinfo write; specifying the path explicitly keeps incremental working.
+
+If you're on Windows without GNU coreutils, swap `timeout 60` for a PowerShell wrapper or rely on a Stop/SessionEnd hook to sweep stale tsc processes.
+
+### CSS Lint
 
 ```json
 {
@@ -76,5 +137,6 @@ Block oversized writes from tool input content, not from a file that may not exi
 ## Ordering
 
 Recommended order:
+
 1. CSS lint (Stylelint)
 2. build verification
