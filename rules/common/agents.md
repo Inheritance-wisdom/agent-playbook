@@ -27,9 +27,9 @@ Located in `~/.claude/agents/`. Organized by category:
 
 **Core**: `planner`, `architect`, `tdd-guide`, `code-reviewer`, `security-reviewer`, `refactor-cleaner`, `doc-updater`, `performance-optimizer`, `code-simplifier`, `e2e-runner`, `code-explorer`, `code-architect`
 
-**Language reviewers**: `typescript-reviewer`, `go-reviewer`, `python-reviewer`, `kotlin-reviewer`, `rust-reviewer`, `java-reviewer`, `flutter-reviewer`, `database-reviewer`, `cpp-reviewer`, `csharp-reviewer`
+**Language reviewers**: `typescript-reviewer`, `go-reviewer`, `python-reviewer`, `kotlin-reviewer`, `rust-reviewer`, `java-reviewer`, `flutter-reviewer`, `database-reviewer`, `cpp-reviewer`, `csharp-reviewer`, `fsharp-reviewer`
 
-**Build resolvers**: `go-build-resolver`, `rust-build-resolver`, `kotlin-build-resolver`, `java-build-resolver`, `cpp-build-resolver`, `dart-build-resolver`, `pytorch-build-resolver`, `build-error-resolver`
+**Build resolvers**: `go-build-resolver`, `rust-build-resolver`, `kotlin-build-resolver`, `java-build-resolver`, `cpp-build-resolver`, `dart-build-resolver`, `pytorch-build-resolver`, `harmonyos-app-resolver`, `build-error-resolver`
 
 **Specialists**: `silent-failure-hunter`, `type-design-analyzer`, `comment-analyzer`, `pr-test-analyzer`
 

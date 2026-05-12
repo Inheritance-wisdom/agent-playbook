@@ -1,4 +1,4 @@
-**言語:** [English](../../README.md) | [Português (Brasil)](../pt-BR/README.md) | [简体中文](../../README.zh-CN.md) | [繁體中文](../zh-TW/README.md) | [日本語](README.md) | [한국어](../ko-KR/README.md) | [Türkçe](../tr/README.md)
+**言語:** [English](../../README.md) | [Português (Brasil)](../pt-BR/README.md) | [简体中文](../../README.zh-CN.md) | [繁體中文](../zh-TW/README.md) | [日本語](README.md) | [한국어](../ko-KR/README.md) | [Türkçe](../tr/README.md) | [Русский](../ru/README.md) | [Tiếng Việt](../vi-VN/README.md)
 
 # Everything Claude Code
 
@@ -19,9 +19,9 @@
 
 <div align="center">
 
-**言語 / Language / 語言 / Dil**
+**言語 / Language / 語言 / Dil / Язык / Ngôn ngữ**
 
-[**English**](../../README.md) | [Português (Brasil)](../pt-BR/README.md) | [简体中文](../../README.zh-CN.md) | [繁體中文](../zh-TW/README.md) | [日本語](README.md) | [한국어](../ko-KR/README.md) | [Türkçe](../tr/README.md)
+[**English**](../../README.md) | [Português (Brasil)](../pt-BR/README.md) | [简体中文](../../README.zh-CN.md) | [繁體中文](../zh-TW/README.md) | [日本語](README.md) | [한국어](../ko-KR/README.md) | [Türkçe](../tr/README.md) | [Русский](../ru/README.md) | [Tiếng Việt](../vi-VN/README.md)
 
 </div>
 
@@ -228,6 +228,10 @@ everything-claude-code/
 |   |-- django-verification/        # Django 検証ループ（新規）
 |   |-- python-patterns/            # Python イディオムとベストプラクティス（新規）
 |   |-- python-testing/             # pytest を使った Python テスト（新規）
+|   |-- quarkus-patterns/            # Quarkus アーキテクチャ、Camel、CDI、Panache パターン（新規）
+|   |-- quarkus-security/           # Quarkus セキュリティ: JWT/OIDC、RBAC、バリデーション（新規）
+|   |-- quarkus-tdd/                # Quarkus TDD: JUnit 5、Mockito、REST Assured（新規）
+|   |-- quarkus-verification/       # Quarkus 検証: ビルド、テスト、ネイティブコンパイル（新規）
 |   |-- springboot-patterns/        # Java Spring Boot パターン（新規）
 |   |-- springboot-security/        # Spring Boot セキュリティ（新規）
 |   |-- springboot-tdd/             # Spring Boot TDD（新規）
