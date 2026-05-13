@@ -80,7 +80,7 @@
 
 ## 最新动态
 
-### v1.3.1 — 表面同步、运营工作流与 ECC 2.0 Alpha（2026年4月）
+### v1.3.2 — 表面同步、运营工作流与 ECC 2.0 Alpha（2026年4月）
 
 - **公共表面已与真实仓库同步** —— 元数据、目录数量、插件清单以及安装文档现在都与实际开源表面保持一致。
 - **运营与外向型工作流扩展** —— `brand-voice`、`social-graph-ranker`、`customer-billing-ops`、`google-workspace-ops` 等运营型 skill 已纳入同一系统。
