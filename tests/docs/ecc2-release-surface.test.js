@@ -50,7 +50,9 @@ const expectedReleaseFiles = [
   'telegram-handoff.md',
   'demo-prompts.md',
   'quickstart.md',
+  'preview-pack-manifest.md',
   'publication-readiness.md',
+  'release-name-plugin-publication-checklist-2026-05-18.md',
 ];
 
 test('release candidate directory includes the public launch pack', () => {
@@ -105,6 +107,10 @@ test('business launch copy stays aligned with the rc.1 public surface', () => {
   const source = read('docs/business/social-launch-copy.md');
   assert.ok(source.includes('ECC v2.0.0-rc.1'), 'business launch copy should use the rc.1 release');
   assert.ok(
+    source.includes('preview pack is ready for final release review'),
+    'business launch copy should stay pre-publication until release URLs exist'
+  );
+  assert.ok(
     source.includes('https://github.com/affaan-m/everything-claude-code'),
     'business launch copy should include the public repo URL'
   );
@@ -116,6 +122,21 @@ test('business launch copy stays aligned with the rc.1 public surface', () => {
   );
   assert.ok(!source.includes('<repo-link>'), 'business launch copy should not contain repo placeholders');
   assert.ok(!source.includes('v1.8.0'), 'business launch copy should not stay pinned to v1.8.0');
+});
+
+test('announcement drafts avoid live-release claims before publication', () => {
+  const announcementFiles = [
+    'docs/releases/2.0.0-rc.1/linkedin-post.md',
+    'docs/business/social-launch-copy.md',
+  ];
+
+  for (const relativePath of announcementFiles) {
+    const source = read(relativePath);
+    assert.ok(
+      !/ECC v2\.0\.0-rc\.1 is live\./.test(source),
+      `${relativePath} must not claim rc.1 is live before the release gate completes`
+    );
+  }
 });
 
 test('Hermes setup uses release-candidate wording for the rc.1 surface', () => {
@@ -142,6 +163,37 @@ test('release docs preserve the ECC/Hermes boundary', () => {
 test('release notes route new contributors through the rc.1 quickstart', () => {
   const releaseNotes = read('docs/releases/2.0.0-rc.1/release-notes.md');
   assert.ok(releaseNotes.includes('[rc.1 quickstart](quickstart.md)'));
+});
+
+test('preview pack manifest assembles release, Hermes, and publication gates', () => {
+  const manifest = read('docs/releases/2.0.0-rc.1/preview-pack-manifest.md');
+
+  for (const artifact of [
+    'docs/HERMES-SETUP.md',
+    'skills/hermes-imports/SKILL.md',
+    'docs/architecture/harness-adapter-compliance.md',
+    'scripts/preview-pack-smoke.js',
+    'docs/releases/2.0.0-rc.1/publication-readiness.md',
+    'docs/releases/2.0.0-rc.1/naming-and-publication-matrix.md',
+    'docs/releases/2.0.0-rc.1/release-name-plugin-publication-checklist-2026-05-18.md',
+  ]) {
+    assert.ok(manifest.includes(artifact), `preview pack manifest missing ${artifact}`);
+  }
+
+  for (const blocker of [
+    'GitHub prerelease `v2.0.0-rc.1`',
+    'npm `ecc-universal@2.0.0-rc.1`',
+    'Claude plugin tag',
+    'Codex repo-marketplace distribution evidence',
+    'ECC Tools billing/product readiness',
+  ]) {
+    assert.ok(manifest.includes(blocker), `preview pack manifest missing blocker ${blocker}`);
+  }
+
+  assert.ok(manifest.includes('no raw workspace exports'));
+  assert.ok(manifest.includes('Final Verification Commands'));
+  assert.ok(manifest.includes('npm run preview-pack:smoke'));
+  assert.ok(manifest.includes('Reference-Inspired Adapter Direction'));
 });
 
 test('rc.1 quickstart gives a clone-to-cross-harness path', () => {
@@ -178,6 +230,8 @@ test('launch checklist records the ecc2 alpha version policy', () => {
 
 test('publication readiness checklist gates public release actions on evidence', () => {
   const source = read('docs/releases/2.0.0-rc.1/publication-readiness.md');
+  const may15Evidence = read('docs/releases/2.0.0-rc.1/publication-evidence-2026-05-15.md');
+  const discussionPlaybook = read('docs/architecture/discussion-response-playbook.md');
 
   for (const section of [
     '## Release Identity Matrix',
@@ -205,12 +259,93 @@ test('publication readiness checklist gates public release actions on evidence',
     'npm package',
     'Claude plugin',
     'Codex plugin',
+    'Codex repo marketplace',
     'OpenCode package',
     'ECC Tools billing reference',
     'Announcement copy',
   ]) {
     assert.ok(source.includes(surface), `publication readiness missing ${surface}`);
   }
+
+  assert.ok(source.includes('publication-evidence-2026-05-15.md'));
+  assert.ok(source.includes('Preview-pack smoke'));
+  assert.ok(source.includes('npm run preview-pack:smoke'));
+  assert.ok(may15Evidence.includes('PR #1921'));
+  assert.ok(may15Evidence.includes('PR #1933'));
+  assert.ok(may15Evidence.includes('PR #1934'));
+  assert.ok(may15Evidence.includes('PR #1935'));
+  assert.ok(may15Evidence.includes('AgentShield PR #83'));
+  assert.ok(may15Evidence.includes('AgentShield PR #85'));
+  assert.ok(may15Evidence.includes('AgentShield PR #86'));
+  assert.ok(may15Evidence.includes('ci-context.json'));
+  assert.ok(may15Evidence.includes('ECC Tools PR #73'));
+  assert.ok(may15Evidence.includes('ECC-Tools PR #75'));
+  assert.ok(may15Evidence.includes('| Platform audit |'));
+  assert.ok(may15Evidence.includes('Ready; open PRs 0/20'));
+  assert.ok(may15Evidence.includes('passed 15/15'));
+  assert.ok(may15Evidence.includes('restore-only'));
+  assert.ok(may15Evidence.includes('462/462'));
+  assert.ok(may15Evidence.includes('## Codex Marketplace Evidence'));
+  assert.ok(may15Evidence.includes('codex plugin marketplace add <local-checkout>'));
+  assert.ok(may15Evidence.includes('Plugin Directory publishing is still blocked'));
+  assert.ok(may15Evidence.includes('announcementGate.ready === true'));
+  assert.ok(source.includes('ECC-Tools #73 added announcementGate'));
+  assert.ok(source.includes('do not claim official Plugin Directory listing before OpenAI submission evidence'));
+  assert.ok(source.includes('release-name-plugin-publication-checklist-2026-05-18.md'));
+  assert.ok(source.includes('Release name and plugin publication checklist'));
+  assert.ok(may15Evidence.includes('| Trunk discussions | GraphQL discussion count and maintainer-touch sweep | 58 total discussions;'));
+  assert.ok(source.includes('platform audit sampled 58 trunk discussions'));
+  assert.ok(source.includes('0 needing maintainer touch'));
+  assert.ok(source.includes('discussion-response-playbook.md'));
+  for (const expected of [
+    'Public Support',
+    'Maintainer Coordination',
+    'Stale Or Concluded',
+    'Release Announcement',
+    'Security Escalation',
+    'classified as informational',
+  ]) {
+    assert.ok(discussionPlaybook.includes(expected), `discussion playbook missing ${expected}`);
+  }
+  assert.ok(may15Evidence.includes('env -u GITHUB_TOKEN'));
+  assert.ok(may15Evidence.includes('ITO-44'));
+  assert.ok(may15Evidence.includes('0 open PRs, 0 open issues'));
+});
+
+test('release name and plugin publication checklist freezes rc.1 surfaces', () => {
+  const checklist = read(
+    'docs/releases/2.0.0-rc.1/release-name-plugin-publication-checklist-2026-05-18.md'
+  );
+  const launchChecklist = read('docs/releases/2.0.0-rc.1/launch-checklist.md');
+  const referenceArchitecture = read('docs/ECC-2.0-REFERENCE-ARCHITECTURE.md');
+
+  for (const value of [
+    'Everything Claude Code (ECC)',
+    '`affaan-m/everything-claude-code`',
+    '`ecc-universal`',
+    '`ecc` on npm is occupied',
+    '`@affaan-m/ecc` is unclaimed on npm',
+    'Claude plugin',
+    'Codex plugin',
+    'do not claim official directory listing until OpenAI publishing path is available',
+    'Do not rename the repo or package until rc.1 is published',
+    'Do not announce billing, Marketplace, or native payments',
+  ]) {
+    assert.ok(checklist.includes(value), `release name/plugin checklist missing ${value}`);
+  }
+
+  for (const command of [
+    'claude plugin validate .claude-plugin/plugin.json',
+    'claude plugin tag .claude-plugin --dry-run',
+    'codex plugin marketplace add --help',
+    'npm publish --tag next --dry-run',
+    'npm run preview-pack:smoke',
+  ]) {
+    assert.ok(checklist.includes(command), `release name/plugin checklist missing command ${command}`);
+  }
+
+  assert.ok(launchChecklist.includes('release-name-plugin-publication-checklist-2026-05-18.md'));
+  assert.ok(referenceArchitecture.includes('Keep the release/name/plugin publication checklist current'));
 });
 
 test('release checklist and roadmap link to publication readiness evidence gate', () => {
