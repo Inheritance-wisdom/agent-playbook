@@ -27,47 +27,34 @@ function load(relativePath) {
 
 console.log('\n=== Testing release publish workflow ===\n');
 
-for (const workflow of [
-  '.github/workflows/release.yml',
-  '.github/workflows/reusable-release.yml',
-]) {
+for (const workflow of ['.github/workflows/release.yml', '.github/workflows/reusable-release.yml']) {
   const content = load(workflow);
-  const jobsIndex = content.search(/^jobs:\s*$/m);
-  const workflowHeader = jobsIndex >= 0 ? content.slice(0, jobsIndex) : content;
 
-  test(`${workflow} scopes id-token to the publish job for npm provenance`, () => {
-    assert.doesNotMatch(workflowHeader, /id-token:\s*write/);
-    assert.match(content, /\n\s+permissions:\n\s+contents:\s*write\n\s+id-token:\s*write/m);
-  });
-
-  test(`${workflow} configures the npm registry`, () => {
-    assert.match(content, /registry-url:\s*['"]https:\/\/registry\.npmjs\.org['"]/);
-  });
-
-  test(`${workflow} ignores dependency lifecycle scripts before privileged publish`, () => {
+  test(`${workflow} ignores dependency lifecycle scripts`, () => {
     assert.match(content, /npm ci --ignore-scripts/);
   });
 
-  test(`${workflow} checks whether the tagged npm version already exists`, () => {
-    assert.match(content, /Check npm publish state/);
-    assert.match(content, /npm view "\$\{PACKAGE_NAME\}@\$\{PACKAGE_VERSION\}" version/);
+  test(`${workflow} creates the GitHub Release`, () => {
+    assert.match(content, /name: Create GitHub Release/);
   });
 
-  test(`${workflow} publishes new tag versions to npm`, () => {
-    assert.match(content, /npm publish "\$\{\{ needs\.verify\.outputs\.package_file \}\}" --access public --provenance/);
-    assert.match(content, /NODE_AUTH_TOKEN:\s*\$\{\{\s*secrets\.NPM_TOKEN\s*\}\}/);
+  test(`${workflow} does not publish to the public npm registry`, () => {
+    assert.doesNotMatch(content, /npm publish/);
+    assert.doesNotMatch(content, /name: Publish npm package/);
   });
 
-  test(`${workflow} creates the GitHub Release before publishing to npm`, () => {
-    const releaseIndex = content.indexOf('name: Create GitHub Release');
-    const publishIndex = content.indexOf('name: Publish npm package');
+  test(`${workflow} does not probe the npm registry for published versions`, () => {
+    assert.doesNotMatch(content, /Check npm publish state/);
+    assert.doesNotMatch(content, /npm view /);
+  });
 
-    assert.ok(releaseIndex >= 0, `${workflow} should create a GitHub Release`);
-    assert.ok(publishIndex >= 0, `${workflow} should publish the npm package`);
-    assert.ok(
-      releaseIndex < publishIndex,
-      `${workflow} should not publish to npm until GitHub Release creation has succeeded`
-    );
+  test(`${workflow} does not request id-token (npm provenance) permissions`, () => {
+    assert.doesNotMatch(content, /id-token:\s*write/);
+  });
+
+  test(`${workflow} does not reference npm registry credentials or configuration`, () => {
+    assert.doesNotMatch(content, /NPM_TOKEN/);
+    assert.doesNotMatch(content, /registry-url/);
   });
 }
 
