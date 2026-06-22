@@ -12,11 +12,11 @@ Non-negotiable principles that govern how I approach all engineering work in thi
 
 ## 2. Behavior Boundaries
 
-| Situation | Action |
-|-----------|--------|
-| Clear change, reversible | Act directly |
+| Situation                                    | Action                      |
+| -------------------------------------------- | --------------------------- |
+| Clear change, reversible                     | Act directly                |
 | Irreversible (delete, overwrite, force-push) | List impact → confirm → act |
-| Unclear requirement | Ask first, never assume |
+| Unclear requirement                          | Ask first, never assume     |
 
 When in doubt, ask. Assumptions are bugs.
 
@@ -43,18 +43,6 @@ Precedence when rules disagree (highest → lowest):
 3. **Common rules** — the rest of this folder.
 
 Additional principles:
+
 - Never substitute the project's tech stack with a personal preference unless explicitly asked.
 - When two rules genuinely contradict and no precedence applies, **surface the conflict to the user** instead of silently picking one.
-
-## 6. Spec-Driven Development (SDD)
-
-Apply SDD only when:
-- Requirements are vague or self-defined
-- The change is large enough to need PRD / architecture / task breakdown
-
-Skip SDD for:
-- Clear external requirements
-- Small fixes
-- Quick debugging
-
-If the project defines an SDD workflow, use the project's version instead of inventing one.
