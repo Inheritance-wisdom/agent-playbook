@@ -1,7 +1,7 @@
 {
   "name": "ecc",
   "interface": {
-    "displayName": "Everything Claude Code"
+    "displayName": "ECC"
   },
   "plugins": [
     {
@@ -9,7 +9,7 @@
       "version": "1.4.1",
       "source": {
         "source": "local",
-        "path": "./"
+        "path": "./plugins/ecc"
       },
       "policy": {
         "installation": "AVAILABLE",

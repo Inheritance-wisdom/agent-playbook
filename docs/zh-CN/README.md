@@ -7,7 +7,7 @@
 [![Contributors](https://img.shields.io/github/contributors/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/graphs/contributors)
 [![npm ecc-universal](https://img.shields.io/npm/dw/ecc-universal?label=ecc-universal%20weekly%20downloads\&logo=npm)](https://www.npmjs.com/package/ecc-universal)
 [![npm ecc-agentshield](https://img.shields.io/npm/dw/ecc-agentshield?label=ecc-agentshield%20weekly%20downloads\&logo=npm)](https://www.npmjs.com/package/ecc-agentshield)
-[![GitHub App Install](https://img.shields.io/badge/GitHub%20App-150%20installs-2ea44f?logo=github)](https://github.com/marketplace/ecc-tools)
+[![GitHub App Install](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.ecc.tools%2Fbadge%2Finstalls&logo=github)](https://github.com/marketplace/ecc-tools)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Shell](https://img.shields.io/badge/-Shell-4EAA25?logo=gnu-bash\&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript\&logoColor=white)
@@ -167,7 +167,7 @@
 
 ```bash
 # Add marketplace
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+/plugin marketplace add https://github.com/affaan-m/ECC
 
 # Install plugin
 /plugin install ecc@ecc
@@ -603,7 +603,7 @@ Claude Code v2.1+ **会自动加载** 任何已安装插件中的 `hooks/hooks.j
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add https://github.com/affaan-m/everything-claude-code
+/plugin marketplace add https://github.com/affaan-m/ECC
 
 # Install the plugin
 /plugin install ecc@ecc
@@ -1140,9 +1140,9 @@ opencode
 | 命令 | PASS: 76 个 | PASS: 35 个 | **Claude Code 领先** |
 | 技能 | PASS: 232 项 | PASS: 37 项 | **Claude Code 领先** |
 | 钩子 | PASS: 8 种事件类型 | PASS: 11 种事件 | **OpenCode 更多！** |
-| 规则 | PASS: 29 条 | PASS: 13 条指令 | **Claude Code 领先** |
-| MCP 服务器 | PASS: 14 个 | PASS: 完整 | **完全对等** |
-| 自定义工具 | PASS: 通过钩子 | PASS: 6 个原生工具 | **OpenCode 更优** |
+| 规则 | PASS: 29 条    | PASS: 13 条指令 | **Claude Code 领先** |
+| MCP 服务器 | PASS: 14 个    | PASS: 完整 | **完全对等** |
+| 自定义工具 | PASS: 通过钩子    | PASS: 6 个原生工具 | **OpenCode 更优** |
 
 ### 通过插件实现的钩子支持
 
