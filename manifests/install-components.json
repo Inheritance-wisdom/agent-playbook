@@ -98,6 +98,14 @@
       ]
     },
     {
+      "id": "framework:vue",
+      "family": "framework",
+      "description": "Vue.js, Nuxt, Pinia, and Vue Router engineering guidance. Currently resolves through the shared framework-language module.",
+      "modules": [
+        "framework-language"
+      ]
+    },
+    {
       "id": "framework:nextjs",
       "family": "framework",
       "description": "Next.js-focused engineering guidance. Currently resolves through the shared framework-language module.",
@@ -168,6 +176,22 @@
       "description": "Connected-app operator workflows for setup audits, billing operations, program tracking, Google Workspace, and network optimization.",
       "modules": [
         "operator-workflows"
+      ]
+    },
+    {
+      "id": "capability:optimization",
+      "family": "capability",
+      "description": "Parallel execution, benchmarking, throughput, latency, and recursive decision-ledger skills.",
+      "modules": [
+        "optimization-workflows"
+      ]
+    },
+    {
+      "id": "capability:prediction-markets",
+      "family": "capability",
+      "description": "Public, non-advisory prediction-market and Itô basket research workflows with gated Itô API access.",
+      "modules": [
+        "prediction-market-skills"
       ]
     },
     {
@@ -495,6 +519,14 @@
       ]
     },
     {
+      "id": "skill:vue-patterns",
+      "family": "skill",
+      "description": "Vue.js 3 Composition API, reactivity, Pinia, Vue Router, and Nuxt SSR patterns.",
+      "modules": [
+        "framework-language"
+      ]
+    },
+    {
       "id": "skill:backend-patterns",
       "family": "skill",
       "description": "API design, database, and backend engineering patterns.",
@@ -588,6 +620,14 @@
       "description": "Traditional Chinese (zh-TW) translated reference docs installed to ~/.claude/docs/zh-TW/.",
       "modules": [
         "docs-zh-tw"
+      ]
+    },
+    {
+      "id": "locale:de-de",
+      "family": "locale",
+      "description": "German (de-DE) translated reference docs installed to ~/.claude/docs/de-DE/.",
+      "modules": [
+        "docs-de-de"
       ]
     }
   ]

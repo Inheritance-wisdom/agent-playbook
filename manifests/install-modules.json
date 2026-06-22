@@ -10,6 +10,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codebuddy",
@@ -33,6 +34,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -51,10 +53,13 @@
       "kind": "commands",
       "description": "Core slash-command library and command docs.",
       "paths": [
-        "commands"
+        "commands",
+        "scripts/harness-audit.js",
+        "scripts/skills-health.js"
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "opencode",
@@ -79,6 +84,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "opencode",
         "codebuddy"
@@ -106,6 +112,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -168,15 +175,20 @@
         "skills/quarkus-patterns",
         "skills/quarkus-tdd",
         "skills/quarkus-verification",
+        "skills/react-patterns",
+        "skills/react-performance",
+        "skills/react-testing",
         "skills/rust-patterns",
         "skills/rust-testing",
         "skills/springboot-patterns",
         "skills/springboot-tdd",
         "skills/springboot-verification",
-        "skills/ui-to-vue"
+        "skills/ui-to-vue",
+        "skills/vue-patterns"
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -210,6 +222,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -255,6 +268,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -270,6 +284,37 @@
       "defaultInstall": true,
       "cost": "medium",
       "stability": "stable"
+    },
+    {
+      "id": "optimization-workflows",
+      "kind": "skills",
+      "description": "Parallel execution, benchmarking, data-throughput, latency, and recursive decision-ledger skills for faster evidence-backed work.",
+      "paths": [
+        "skills/benchmark-optimization-loop",
+        "skills/data-throughput-accelerator",
+        "skills/latency-critical-systems",
+        "skills/parallel-execution-optimizer",
+        "skills/recursive-decision-ledger"
+      ],
+      "targets": [
+        "claude",
+        "claude-project",
+        "cursor",
+        "antigravity",
+        "codex",
+        "opencode",
+        "codebuddy",
+        "joycode",
+        "qwen",
+        "zed"
+      ],
+      "dependencies": [
+        "workflow-quality",
+        "operator-workflows"
+      ],
+      "defaultInstall": false,
+      "cost": "medium",
+      "stability": "beta"
     },
     {
       "id": "security",
@@ -294,6 +339,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -326,6 +372,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -360,6 +407,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -402,6 +450,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -419,6 +468,39 @@
       "stability": "beta"
     },
     {
+      "id": "prediction-market-skills",
+      "kind": "skills",
+      "description": "Public, non-advisory prediction-market and Itô basket research workflows with gated Itô API access.",
+      "paths": [
+        "skills/ito-basket-compare",
+        "skills/ito-data-atlas-agent",
+        "skills/ito-market-intelligence",
+        "skills/ito-trade-planner",
+        "skills/prediction-market-oracle-research",
+        "skills/prediction-market-risk-review"
+      ],
+      "targets": [
+        "claude",
+        "claude-project",
+        "cursor",
+        "antigravity",
+        "codex",
+        "opencode",
+        "codebuddy",
+        "joycode",
+        "qwen",
+        "zed"
+      ],
+      "dependencies": [
+        "research-apis",
+        "business-content",
+        "security"
+      ],
+      "defaultInstall": false,
+      "cost": "medium",
+      "stability": "beta"
+    },
+    {
       "id": "social-distribution",
       "kind": "skills",
       "description": "Social publishing and distribution skills.",
@@ -428,6 +510,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -459,6 +542,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "codex",
         "opencode",
@@ -479,8 +563,6 @@
       "kind": "orchestration",
       "description": "Worktree/tmux orchestration runtime and workflow docs.",
       "paths": [
-        "commands/multi-workflow.md",
-        "commands/sessions.md",
         "scripts/lib/orchestration-session.js",
         "scripts/lib/tmux-worktree-orchestrator.js",
         "scripts/orchestrate-codex-worker.sh",
@@ -490,6 +572,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "codex",
         "opencode"
       ],
@@ -515,6 +598,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -536,6 +620,7 @@
       "kind": "skills",
       "description": "Agentic engineering, autonomous loops, agent harness construction, and LLM pipeline optimization skills.",
       "paths": [
+        "scripts/claw.js",
         "skills/agent-architecture-audit",
         "skills/agent-harness-construction",
         "skills/agentic-engineering",
@@ -548,17 +633,20 @@
         "skills/continuous-agent-loop",
         "skills/cost-aware-llm-pipeline",
         "skills/data-scraper-agent",
+        "skills/dynamic-workflow-mode",
         "skills/enterprise-agent-ops",
         "skills/nanoclaw-repl",
         "skills/prompt-optimizer",
         "skills/ralphinho-rfc-pipeline",
         "skills/regex-vs-llm-structured-text",
         "skills/search-first",
+        "skills/team-agent-orchestration",
         "skills/token-budget-advisor",
         "skills/team-builder"
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -592,6 +680,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -617,6 +706,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -653,6 +743,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -679,6 +770,7 @@
       ],
       "targets": [
         "claude",
+        "claude-project",
         "cursor",
         "antigravity",
         "codex",
@@ -703,7 +795,8 @@
         "docs/ja-JP"
       ],
       "targets": [
-        "claude"
+        "claude",
+        "claude-project"
       ],
       "dependencies": [],
       "defaultInstall": false,
@@ -718,7 +811,8 @@
         "docs/zh-CN"
       ],
       "targets": [
-        "claude"
+        "claude",
+        "claude-project"
       ],
       "dependencies": [],
       "defaultInstall": false,
@@ -733,7 +827,8 @@
         "docs/ko-KR"
       ],
       "targets": [
-        "claude"
+        "claude",
+        "claude-project"
       ],
       "dependencies": [],
       "defaultInstall": false,
@@ -748,7 +843,8 @@
         "docs/pt-BR"
       ],
       "targets": [
-        "claude"
+        "claude",
+        "claude-project"
       ],
       "dependencies": [],
       "defaultInstall": false,
@@ -763,7 +859,8 @@
         "docs/ru"
       ],
       "targets": [
-        "claude"
+        "claude",
+        "claude-project"
       ],
       "dependencies": [],
       "defaultInstall": false,
@@ -778,7 +875,8 @@
         "docs/tr"
       ],
       "targets": [
-        "claude"
+        "claude",
+        "claude-project"
       ],
       "dependencies": [],
       "defaultInstall": false,
@@ -793,7 +891,8 @@
         "docs/vi-VN"
       ],
       "targets": [
-        "claude"
+        "claude",
+        "claude-project"
       ],
       "dependencies": [],
       "defaultInstall": false,
@@ -808,7 +907,24 @@
         "docs/zh-TW"
       ],
       "targets": [
-        "claude"
+        "claude",
+        "claude-project"
+      ],
+      "dependencies": [],
+      "defaultInstall": false,
+      "cost": "heavy",
+      "stability": "stable"
+    },
+    {
+      "id": "docs-de-de",
+      "kind": "docs",
+      "description": "German (de-DE) translated reference docs for agents, commands, skills, and rules.",
+      "paths": [
+        "docs/de-DE"
+      ],
+      "targets": [
+        "claude",
+        "claude-project"
       ],
       "dependencies": [],
       "defaultInstall": false,
